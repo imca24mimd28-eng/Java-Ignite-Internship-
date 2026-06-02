@@ -1,31 +1,60 @@
-class Student {
+class GameCharacter {
     String name;
-    int age;
-    private int marks;
+    private int health;
+    private int attackPower;
 
-    Student(String name, int age, int marks) {
+    // Constructor using this keyword
+    public GameCharacter(String name, int health, int attackPower) {
         this.name = name;
-        this.age = age;
-        this.marks = marks;
+        this.health = health;
+        this.attackPower = attackPower;
     }
 
-    void display() {
+    // Attack method
+    public void attack(GameCharacter enemy) {
+        enemy.health -= this.attackPower;
+
+        if (enemy.health < 0) {
+            enemy.health = 0;
+        }
+
+        System.out.println(this.name + " attacked " + enemy.name +
+                " and reduced health by " + this.attackPower);
+    }
+
+    // Heal method
+    public void heal() {
+        this.health += 20;
+        System.out.println(this.name + " healed and gained 20 health.");
+    }
+
+    // Show stats method
+    public void showStats() {
         System.out.println("Name: " + name);
-        System.out.println("Age: " + age);
-        System.out.println("Marks: " + marks);
-        System.out.println();
+        System.out.println("Health: " + health);
+        System.out.println("Attack Power: " + attackPower);
+        System.out.println("--------------------");
     }
 }
 
-public class StudentProfile {
-	 public static void main(String[] args) {
+public class MiniGamee {
+	public static void main(String[] args) {
 
-	        Student s1 = new Student("Sumi", 20, 85);
-	        Student s2 = new Student("krish", 21, 92);
+        GameCharacter player1 = new GameCharacter("Warrior", 100, 25);
+        GameCharacter player2 = new GameCharacter("Dragon", 120, 20);
 
-	        s1.display();
-	        s2.display();
-	    }
-	}
+        System.out.println("Initial Stats:");
+        player1.showStats();
+        player2.showStats();
 
+        player1.attack(player2);
+        player2.attack(player1);
+
+        player1.heal();
+
+        System.out.println("\nFinal Stats:");
+        player1.showStats();
+        player2.showStats();
+    }
+}
 
