@@ -1,25 +1,31 @@
-/*
-ADVANCED 2 – Mini Game Character System
+class Student {
+    String name;
+    int age;
+    private int marks;
 
-Create a class GameCharacter:
+    Student(String name, int age, int marks) {
+        this.name = name;
+        this.age = age;
+        this.marks = marks;
+    }
 
-Attributes:
-name
-health (PRIVATE)
-attackPower (PRIVATE)
-Requirements:
-Constructor using this
-Proper encapsulation
-Methods:
-attack(GameCharacter enemy)
-heal()
-showStats()
-Rules:
-attack reduces enemy health
-heal increases own health
-health should never be accessed directly
-Twist:
+    void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Marks: " + marks);
+        System.out.println();
+    }
+}
 
-Each attack should show:
-*/
-X attacked Y and reduced health by Z
+public class StudentProfile {
+	 public static void main(String[] args) {
+
+	        Student s1 = new Student("Sumi", 20, 85);
+	        Student s2 = new Student("krish", 21, 92);
+
+	        s1.display();
+	        s2.display();
+	    }
+	}
+
+
